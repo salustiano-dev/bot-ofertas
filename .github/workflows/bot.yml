@@ -1,0 +1,61 @@
+name: Bot de Ofertas
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bot-ofertas
+  cancel-in-progress: false
+
+jobs:
+  rodar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar o codigo
+        uses: actions/checkout@v4
+
+      - name: Instalar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Buscar ofertas novas
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.CHAT_ID }}
+          AMAZON_TAG: ${{ secrets.AMAZON_TAG }}
+          ML_ATIVO: ${{ secrets.ML_ATIVO }}
+          ML_APP_ID: ${{ secrets.ML_APP_ID }}
+          ML_SECRET: ${{ secrets.ML_SECRET }}
+          ML_TERMOS: ${{ secrets.ML_TERMOS }}
+          ML_DESCONTO_MINIMO: ${{ secrets.ML_DESCONTO_MINIMO }}
+          ML_BUG_DESCONTO: ${{ secrets.ML_BUG_DESCONTO }}
+          FEEDS: ${{ secrets.FEEDS }}
+        run: python bot.py --buscar
+
+      - name: Postar uma oferta
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.CHAT_ID }}
+          AMAZON_TAG: ${{ secrets.AMAZON_TAG }}
+        run: python bot.py --agora
+
+      - name: Salvar estado
+        run: |
+          git config user.name "bot-ofertas"
+          git config user.email "actions@users.noreply.github.com"
+          git add ofertas.json .ultimo_indice .ofertas_vistas.json 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m "atualiza estado do bot [skip ci]"
+            git push
+          else
+            echo "Nada mudou."
+          fi
