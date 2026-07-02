@@ -1,8 +1,0 @@
-# NUNCA suba o .env (contem suas chaves secretas!)
-.env
-
-__pycache__/
-*.pyc
-
-# Obs: .ultimo_indice e .ofertas_vistas.json NAO sao ignorados de proposito,
-# porque no GitHub Actions eles guardam o que ja foi postado (o "estado").
