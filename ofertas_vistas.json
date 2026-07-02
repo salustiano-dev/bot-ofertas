@@ -1,0 +1,33 @@
+# Copie este arquivo para ".env" e preencha com seus dados.
+
+# --- Telegram ---
+BOT_TOKEN=123456789:AAExxxxxxxxxxxxxxxxxxxxxxxxxx
+CHAT_ID=@seucanaldeofertas
+
+# --- Afiliado Amazon (tag adicionada automaticamente nos links da Amazon) ---
+AMAZON_TAG=arthur-20
+
+# --- Ritmo de postagem ---
+INTERVALO_MINUTOS=30
+
+# --- Busca automatica de ofertas ---
+BUSCAR_AUTOMATICO=true
+BUSCAR_A_CADA_HORAS=3
+# Feeds RSS separados por virgula (troque pelos seus)
+FEEDS=https://www.exemplo-ofertas.com/feed,https://outro-site-de-promo.com/rss
+DESCONTO_MINIMO=0
+MAX_POR_FEED=10
+
+# --- Mercado Livre (busca ofertas + detecta bugs) ---
+ML_ATIVO=true
+ML_APP_ID=SEU_APP_ID
+ML_SECRET=SUA_SECRET_KEY
+# termos que o bot procura (separados por virgula)
+ML_TERMOS=celular,notebook,fone bluetooth,smart tv,air fryer,console playstation,monitor,cadeira gamer,perfume,tenis
+ML_LIMITE_POR_TERMO=20
+ML_DESCONTO_MINIMO=10
+ML_BUG_DESCONTO=70
+
+# --- Teste ---
+# DRY_RUN=true simula sem postar de verdade
+DRY_RUN=false
