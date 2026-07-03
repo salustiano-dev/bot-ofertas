@@ -32,13 +32,8 @@ jobs:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
           AMAZON_TAG: ${{ secrets.AMAZON_TAG }}
-          ML_ATIVO: ${{ secrets.ML_ATIVO }}
           ML_APP_ID: ${{ secrets.ML_APP_ID }}
           ML_SECRET: ${{ secrets.ML_SECRET }}
-          ML_TERMOS: ${{ secrets.ML_TERMOS }}
-          ML_DESCONTO_MINIMO: ${{ secrets.ML_DESCONTO_MINIMO }}
-          ML_BUG_DESCONTO: ${{ secrets.ML_BUG_DESCONTO }}
-          FEEDS: ${{ secrets.FEEDS }}
         run: python bot.py --buscar
 
       - name: Postar uma oferta
