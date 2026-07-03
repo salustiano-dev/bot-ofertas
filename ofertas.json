@@ -1,1 +1,11 @@
-[{"titulo":"✅ Teste do robô Dearu Recomenda (pode ignorar)","imagem":"","preco_de":199.9,"preco_por":99.9,"cupom":"TESTE","url":"https://www.amazon.com.br","link_afiliado":"https://www.amazon.com.br"}]
+[
+  {
+    "titulo": "✅ Teste do robô Dearu Recomenda (pode ignorar)",
+    "imagem": "",
+    "preco_de": 199.9,
+    "preco_por": 99.9,
+    "cupom": "TESTE",
+    "url": "https://www.amazon.com.br",
+    "link_afiliado": "https://www.amazon.com.br"
+  }
+]
